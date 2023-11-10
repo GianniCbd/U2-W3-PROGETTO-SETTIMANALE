@@ -22,3 +22,6 @@ window.onload = () => {
       console.error("Error fetching product:", error);
     });
 };
+
+const aiuto = "NON HO CAPITO NULLA PROF";
+console.log(aiuto);
