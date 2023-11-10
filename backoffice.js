@@ -60,7 +60,11 @@ function deleteProduct() {
   if (!productId) return;
 
   fetch(`https://striveschool-api.herokuapp.com/api/product/${productId}`, {
-    method: "DELETE"
+    method: "DELETE",
+    headers: {
+      Authorization:
+        "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NTRkZWUzYjI1NGU4ODAwMTgzZjE4ODUiLCJpYXQiOjE2OTk2MDYwNzUsImV4cCI6MTcwMDgxNTY3NX0.ZrsWYLRX6766AQkDpebZPutiDasm5ZIeDo3FONiGrYA"
+    }
   })
     .then((response) => response.json())
     .then((data) => console.log("Product deleted:", data))

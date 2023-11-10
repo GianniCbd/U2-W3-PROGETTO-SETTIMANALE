@@ -2,6 +2,11 @@ const params = new URLSearchParams(window.location.search);
 const productId = params.get("id");
 
 window.onload = () => {
+  if (!productId) {
+    console.error("Product ID is missing in the URL");
+    return;
+  }
+
   const container = document.getElementById("details");
 
   fetch("https://striveschool-api.herokuapp.com/api/product/" + productId, {
@@ -22,6 +27,3 @@ window.onload = () => {
       console.error("Error fetching product:", error);
     });
 };
-
-const aiuto = "NON HO CAPITO NULLA PROF";
-console.log(aiuto);

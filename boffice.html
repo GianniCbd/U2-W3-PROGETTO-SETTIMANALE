@@ -11,26 +11,26 @@
       crossorigin="anonymous"
     />
   </head>
-  <body>
+  <body class="text-bg-primary p-3">
     <h1>Back Office</h1>
 
     <form id="productForm">
       <label for="productName">Nome Prodotto:</label>
-      <input type="text" id="productName" required />
+      <input type="text" id="productName" class="mb-3" required />
       <br />
 
       <label for="productPrice">Prezzo:</label>
-      <input type="number" id="productPrice" required />
+      <input type="number" id="productPrice" class="mb-3" required />
       <br />
 
       <label for="productPrice">Brand:</label>
-      <input type="text" id="productBrand" required />
+      <input type="text" id="productBrand" class="mb-3" required />
       <br />
 
-      <button onclick="HandleSubmit()">Invia</button>
-      <button type="button" onclick="updateProduct()">Modifica Prodotto</button>
-      <button type="button" onclick="deleteProduct()">Cancella Prodotto</button>
-      <button type="button" onclick="resetForm()">Resetta</button>
+      <button class="btn btn-outline-dark btn-lg m-3" onclick="HandleSubmit()">Invia</button>
+      <button class="btn btn-outline-dark btn-lg m-3" type="button" onclick="updateProduct()">Modifica Prodotto</button>
+      <button class="btn btn-outline-dark btn-lg m-3" type="button" onclick="deleteProduct()">Cancella Prodotto</button>
+      <button class="btn btn-outline-dark btn-lg m-3" type="button" onclick="resetForm()">Resetta</button>
     </form>
     <script src="./backoffice.js"></script>
   </body>

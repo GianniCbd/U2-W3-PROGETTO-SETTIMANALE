@@ -1,6 +1,5 @@
 window.onload = () => {
   fetch("https://striveschool-api.herokuapp.com/api/product", {
-    method: "GET",
     headers: {
       Authorization:
         "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NTRkZWUzYjI1NGU4ODAwMTgzZjE4ODUiLCJpYXQiOjE2OTk2MDYwNzUsImV4cCI6MTcwMDgxNTY3NX0.ZrsWYLRX6766AQkDpebZPutiDasm5ZIeDo3FONiGrYA"
@@ -11,18 +10,46 @@ window.onload = () => {
       throw new Error("Errore nella richiesta del server");
     })
     .then((products) => {
-      const list = document.querySelector(".list-product");
+      const cardContainer = document.querySelector(".container");
+
       products.forEach((elem) => {
-        const li = document.createElement("li");
-        li.className = "list-group-item d-flex flex-column mt-4 fs-4";
+        const card = document.createElement("div");
+        card.className = "card mb-4 d-flex justify-content-center align-items-center text-bg-dark";
 
         const img = document.createElement("img");
         img.src = elem.imageUrl;
-        li.appendChild(img);
+        img.className = "card-img-top w-50";
+        card.appendChild(img);
+        console.log(elem.imageUrl);
 
-        li.innerHTML += `<span class="me-auto text-danger fs-1">${elem.name}</span> <span class="me-4">${elem.description}</span> <span>${elem.price}€</span> <a href="./dettagli.html?prod=${elem._id}">Scopri di più</a> `;
-        list.appendChild(li);
+        const cardBody = document.createElement("div");
+        cardBody.className = "card-body";
+
+        const cardTitle = document.createElement("h5");
+        cardTitle.className = "card-title text-danger";
+        cardTitle.textContent = elem.name;
+        cardBody.appendChild(cardTitle);
+
+        const cardDescription = document.createElement("p");
+        cardDescription.className = "card-text";
+        cardDescription.textContent = elem.description;
+        cardBody.appendChild(cardDescription);
+
+        const cardPrice = document.createElement("p");
+        cardPrice.className = "card-text";
+        cardPrice.textContent = `${elem.price}€`;
+        cardBody.appendChild(cardPrice);
+
+        const cardLink = document.createElement("a");
+        cardLink.href = `./dettagli.html?prodId=${elem._id}`;
+        cardLink.className = "btn btn-primary";
+        cardLink.textContent = "Scopri di più";
+        cardBody.appendChild(cardLink);
+
+        card.appendChild(cardBody);
+
+        cardContainer.appendChild(card);
       });
     })
-    .catch((err) => console.error(err));
+    .catch((err) => console.log(err));
 };
