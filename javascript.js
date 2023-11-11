@@ -10,7 +10,7 @@ window.onload = () => {
       throw new Error("Errore nella richiesta del server");
     })
     .then((products) => {
-      const cardContainer = document.querySelector(".container");
+      const cardContainer = document.querySelector(".col");
 
       products.forEach((elem) => {
         const card = document.createElement("div");
@@ -36,13 +36,13 @@ window.onload = () => {
         cardBody.appendChild(cardDescription);
 
         const cardPrice = document.createElement("p");
-        cardPrice.className = "card-text";
+        cardPrice.className = "card-text badge text-bg-secondary d-flex justify-content-center";
         cardPrice.textContent = `${elem.price}€`;
         cardBody.appendChild(cardPrice);
 
         const cardLink = document.createElement("a");
-        cardLink.href = `./dettagli.html?prodId=${elem._id}`;
-        cardLink.className = "btn btn-primary";
+        cardLink.href = `./dettagli.html?id=${elem._id}`;
+        cardLink.className = "btn btn-primary ";
         cardLink.textContent = "Scopri di più";
         cardBody.appendChild(cardLink);
 
